@@ -45,7 +45,12 @@ function renderBody(
       console.log("[OAuth Proxy] Script loaded in popup. Starting handshake for provider: ${content.provider}");
       
       const receiveMessage = (message) => {
-        console.log("[OAuth Proxy] Received reply from main window. Data:", message.data, "| Origin:", message.origin);
+        // Only accept the precise handshake message from the CMS! Ignore Metamask, React DevTools, etc.
+        if (message.data !== "authorizing:${content.provider}") {
+          return;
+        }
+        
+        console.log("[OAuth Proxy] Received valid reply from main window. Data:", message.data, "| Origin:", message.origin);
         
         const payload = 'authorization:${content.provider}:${status}:${JSON.stringify(content)}';
         console.log("[OAuth Proxy] Sending final authorization payload to secure origin:", message.origin);
