@@ -1,0 +1,15 @@
+{
+  "name": "@adrianub/cms",
+  "author": "Adrián UB",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "simple-oauth2": "~5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.0",
+    "@types/simple-oauth2": "^5.0.2"
+  }
+}
